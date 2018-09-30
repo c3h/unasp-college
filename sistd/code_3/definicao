@@ -1,0 +1,19 @@
+>tipo de mensagem
+	saque = -
+	deposito = +
+	s_saldo = s
+	v_bancaria = vbXXXX
+	id_operacao = idXX
+	n_conta = ncXXXX
+	v_saque/deposito = viXXXX
+	dt_saque = dtXXXXXX
+	erro = e
+	
+	exemplo
+		e: snc8453
+		r: vb0932
+		e: -vi0532
+		r: id34vb0400dt050387
+		
+	e = envio
+	r = resposta
