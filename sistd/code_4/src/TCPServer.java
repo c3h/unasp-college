@@ -29,10 +29,27 @@ class Connection extends Thread {
 			}
 	}
 	public void run(){
-		try {			                 // an echo server
-
-			String data = in.readUTF();	                  // read a line of data from the stream
-			out.writeUTF("linux é " + data);
+		try {
+			ContaBancaria conta = new ContaBancaria();
+			String data = in.readUTF();
+			if(data.contains("-")) {
+				out.writeUTF("simbolo saque é:" + data);
+			}else if(data.contains("+")){
+				out.writeUTF("simbolo deposito é:" + data);
+			}else if (data.contains("s")) {
+				out.writeUTF("saber saldo é:" + data);
+			}else if (data.contains("e")) {
+				out.writeUTF("simbolo erro:" + data);
+			}else if (data.contains("nc0001")) {
+				out.writeUTF(conta.Daniel(data));
+			}else if (data.contains("nc0002")) {
+				out.writeUTF(conta.Isaac(data));
+			}else if (data.contains("nc0003")) {
+				out.writeUTF(conta.Gilson(data));
+			}else if (data.contains("nc0004")) {
+				out.writeUTF(conta.Mateus(data));
+			}
+			//out.writeUTF("linux é " + data);
 		}catch (EOFException e){
 			System.out.println("EOF:"+e.getMessage());
 		} catch(IOException e) {
