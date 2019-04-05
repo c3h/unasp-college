@@ -10,15 +10,31 @@ dados = [porco1, porco2, porco3, cachorro4, cachorro5, cachorro6]
 
 marcacoes = [1, 1, 1, -1, -1, -1]
 
-misterioso1 = [1, 1, 1]
-misterioso2 = [0, 0, 1]
-misterioso3 = [0, 1, 0]
-misterioso4 = [1, 1, 0]
-
-teste = [misterioso1, misterioso2, misterioso3, misterioso4]
-
 from sklearn.naive_bayes import MultinomialNB
 
 modelo = MultinomialNB()
 modelo.fit(dados, marcacoes)
-print(modelo.predict(teste))
+
+misterioso1 = [1, 1, 1]
+misterioso2 = [0, 0, 1]
+misterioso3 = [0, 1, 0]
+
+teste = [misterioso1, misterioso2, misterioso3]
+
+marcacoes_teste = [-1, -1, 1]
+
+resultado = modelo.predict(teste)
+
+diferencas = resultado - marcacoes_teste
+
+d = diferencas
+
+acertos = [d for d in diferencas if d == 0]
+
+total_de_acertos = len(acertos)
+total_de_elementos = len(teste)
+
+taxa_de_acerto = 100 * total_de_acertos / total_de_elementos
+
+print(resultado)
+print(taxa_de_acerto)
